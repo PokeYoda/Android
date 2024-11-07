@@ -25,9 +25,9 @@
 
     <fragment
         android:id="@+id/menu_task_1"
-        android:name="com.example.drawerapp.ui.home.HomeFragment"
+        android:name="com.example.drawerapp.ui.zad1.Task1Fragment"
         android:label="@string/menu_task1"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_task1" />
 
     <fragment
         android:id="@+id/menu_task_2"

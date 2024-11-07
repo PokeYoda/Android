@@ -1,38 +1,59 @@
 package com.example.drawerapp.ui.zad1;
 
-import androidx.lifecycle.ViewModelProvider;
-
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
-import com.example.drawerapp.R;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+
+import com.example.drawerapp.databinding.FragmentTask1Binding;
+import com.google.android.material.snackbar.Snackbar;
 
 public class Task1Fragment extends Fragment {
 
-    private Task1ViewModel mViewModel;
+    private FragmentTask1Binding binding;
 
-    public static Task1Fragment newInstance() {
-        return new Task1Fragment();
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             ViewGroup container, Bundle savedInstanceState) {
+        Task1ViewModel homeViewModel =
+                new ViewModelProvider(this).get(Task1ViewModel.class);
+
+        binding = FragmentTask1Binding.inflate(inflater, container, false);
+        View root = binding.getRoot();
+
+
+        binding.ID3.setOnClickListener(v -> {
+            if(binding.ID2.getText().toString().isEmpty()){
+                if(binding.ID5.isChecked()){
+                    Toast.makeText(root.getContext(),"Nie wpisano tekstu",Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Snackbar.make(root.getRootView(),"Nie wpisano tekstu",Snackbar.LENGTH_SHORT).show();
+                }
+            }
+            else{
+                if(binding.ID5.isChecked()){
+                    Toast.makeText(root.getContext(),binding.ID2.getText(),Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Snackbar.make(root.getRootView(),binding.ID2.getText(),Snackbar.LENGTH_SHORT).show();
+                }
+            }
+
+        });
+//        final TextView textView = binding.textTask1;
+//        homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        return root;
     }
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_task1, container, false);
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
     }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(Task1ViewModel.class);
-        // TODO: Use the ViewModel
-    }
-
 }
