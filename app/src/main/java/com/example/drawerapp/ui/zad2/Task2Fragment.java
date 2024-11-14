@@ -18,7 +18,7 @@ public class Task2Fragment extends Fragment {
 
     private FragmentTask2Binding binding;
 
-    String[] desc = {"Volvo", "BMW", "Ford", "Mazda"};
+    String[] desc = {"Barbarian", "Bard", "Druid", "Fighter", "Rogue", "Warlock", "Blood hunter"};
     int index=0;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
