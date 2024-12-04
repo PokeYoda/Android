@@ -43,7 +43,7 @@
 
     <fragment
         android:id="@+id/menu_task_4"
-        android:name="com.example.drawerapp.ui.home.HomeFragment"
+        android:name="com.example.drawerapp.ui.zad4.Task4Fragment"
         android:label="@string/menu_task4"
         tools:layout="@layout/fragment_home" />
 
